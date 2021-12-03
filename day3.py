@@ -1,5 +1,3 @@
-from collections import Counter
-
 # Sloppy implementation, redone slightly nicer in part 2
 def part_one(input):
     tally = []
