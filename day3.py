@@ -27,7 +27,6 @@ def part_two(input):
         row_count = 0
         for row in matrix:
             row_count += 1
-            row = string_to_binary_list(row)
             if(len(tally)) != len(row): tally = [0] * len(row)
             for position, num in enumerate(row):
                 tally[position] += num
@@ -38,9 +37,9 @@ def part_two(input):
         for n in range(len(row)):
             modes = calculate_list_modes(row, count)
             if check_most_frequent:
-                matrix = [r for r in matrix if string_to_binary_list(r[n]) == modes[n]]
+                matrix = [r for r in matrix if r[n] == modes[n]]
             else:
-                matrix = [r for r in matrix if string_to_binary_list(r[n]) != modes[n]]
+                matrix = [r for r in matrix if r[n] != modes[n]]
             row, count = tally_and_count_matrix(matrix)
             if count == 1: 
                 return row
