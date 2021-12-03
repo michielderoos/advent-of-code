@@ -27,8 +27,9 @@ def part_two(input):
         elif direction == 'down':
             aim += distance
     return horizontal * vertical
-
-input = open('day2.input.txt', 'r')
-print(f'Part 1: {part_one(input)} is the solution')
-input = open('day2.input.txt', 'r')
-print(f'Part 2: {part_two(input)} is the solution')
+    
+if __name__ == '__main__':
+    input = open('day2.input.txt', 'r')
+    print(f'Part 1: {part_one(input)} is the solution')
+    input = open('day2.input.txt', 'r')
+    print(f'Part 2: {part_two(input)} is the solution')
