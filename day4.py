@@ -24,7 +24,7 @@ def part_two(input):
 
     transposed_boards = [list(map(list, zip(*board))) for board in boards] # Now we only need to check rows, at the expense of some memory
     winning_boards = []
-    winning_board_indexes = []
+    winning_board_indexes = set()
     for num in drawn_numbers:
         for idx, board in enumerate(boards + transposed_boards): 
             if idx >= len(boards): idx-=len(boards) # Ugly hack to make one index cover both boards
@@ -33,7 +33,7 @@ def part_two(input):
                     if num in row: row.remove(num)
                     if not row:
                         winning_boards.append((board, num))
-                        winning_board_indexes.append(idx)
+                        winning_board_indexes.add(idx)
     winner, winning_number = winning_boards[-1]
     return sum(map(sum, winner)) * winning_number
 
