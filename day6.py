@@ -34,4 +34,4 @@ if __name__ == '__main__':
     with open('day6.input.txt', 'r') as input:
         print(f'Part 1: {part_one(input)} is the solution')
     with open('day6.input.txt', 'r') as input:
-        print(f'Part 1: {part_two(input)} is the solution')
+        print(f'Part 2: {part_two(input)} is the solution')
