@@ -12,16 +12,13 @@ def part_one(input):
 def part_two(input):
     summation = lambda n : (n * (n + 1))/2
     crab_positions = [int(n) for n in input.readline().strip().split(',')]
-    potential_positions = range(min(crab_positions), max(crab_positions))
     prev_total_fuel = None
-    for pos in potential_positions:
+    for pos in range(min(crab_positions), max(crab_positions)):
         total_fuel = 0
-        for p in crab_positions:
-            total_fuel += summation(abs(p - pos))
+        for p in crab_positions: total_fuel += summation(abs(p - pos))
         if not prev_total_fuel: prev_total_fuel = total_fuel
         # If the sequence starts to increase, we've got the optimum point
-        if total_fuel > prev_total_fuel:
-            return int(prev_total_fuel)
+        if total_fuel > prev_total_fuel: return int(prev_total_fuel)
         prev_total_fuel = total_fuel
     
 if __name__ == '__main__':
