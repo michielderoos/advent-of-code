@@ -49,7 +49,6 @@ def part_two(input):
         return is_lowpoint
 
     def get_basin_size(point, grid):
-        grid = grid.copy()
         basin_points = set() # These are parts of basins (but not necessarily basins themselves)
         ignorable_directions = {}
         def scan(point, grid, ignore_directions=[]):
