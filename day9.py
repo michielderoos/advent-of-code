@@ -75,7 +75,7 @@ def part_two(input):
 
     sizes = []
     for y, y_line in enumerate(grid):   
-        for x, value in enumerate(y_line):
+        for x, _ in enumerate(y_line):
             sizes.append(get_basin_size((x, y), grid))
     sizes.sort(reverse=True)
     return reduce((lambda x, y: x * y), sizes[:3])
