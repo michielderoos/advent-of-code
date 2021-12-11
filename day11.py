@@ -2,28 +2,28 @@ from sys import maxsize
 MINSIZE = -maxsize
 STEPS_TO_TAKE = 100
 
+def find_neighbor_points(point, grid):
+    directions = [
+        (point[0], point[1]-1) if ((point[1]-1 >= 0)) else None, # up
+        (point[0], point[1]+1) if ((point[1]+1 < len(grid))) else None, # down
+        (point[0]-1, point[1]) if ((point[0]-1 >= 0)) else None, # left
+        (point[0]+1, point[1]) if (point[0]+1 < len(grid[point[1]])) else None, # right
+        (point[0]-1, point[1]-1) if ((point[0]-1 >= 0) and (point[1]-1 >= 0)) else None, # up-left
+        (point[0]-1, point[1]+1) if ((point[0]-1 >= 0) and (point[1]+1 < len(grid))) else None, # down-left
+        (point[0]+1, point[1]-1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]-1 >= 0)) else None, # up-right
+        (point[0]+1, point[1]+1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]+1 < len(grid))) else None, # up-right
+    ]
+    return directions
+    
+# Flashes point, and cascades flashes caused by flashes
+def flash_point(point, grid):
+    grid[point[1]][point[0]] = MINSIZE # 
+    for point in find_neighbor_points(point, grid):
+        if point:
+            grid[point[1]][point[0]] += 1
+            if grid[point[1]][point[0]] > 9:
+                flash_point(point, grid)
 def part_one(input):
-    def find_neighbor_points(point, grid):
-        directions = [
-            (point[0], point[1]-1) if ((point[1]-1 >= 0)) else None, # up
-            (point[0], point[1]+1) if ((point[1]+1 < len(grid))) else None, # down
-            (point[0]-1, point[1]) if ((point[0]-1 >= 0)) else None, # left
-            (point[0]+1, point[1]) if (point[0]+1 < len(grid[point[1]])) else None, # right
-            (point[0]-1, point[1]-1) if ((point[0]-1 >= 0) and (point[1]-1 >= 0)) else None, # up-left
-            (point[0]-1, point[1]+1) if ((point[0]-1 >= 0) and (point[1]+1 < len(grid))) else None, # down-left
-            (point[0]+1, point[1]-1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]-1 >= 0)) else None, # up-right
-            (point[0]+1, point[1]+1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]+1 < len(grid))) else None, # up-right
-        ]
-        return directions
-
-    # Flashes point, and cascades flashes caused by flashes
-    def flash_point(point, grid):
-        grid[point[1]][point[0]] = MINSIZE # 
-        for point in find_neighbor_points(point, grid):
-            if point:
-                grid[point[1]][point[0]] += 1
-                if grid[point[1]][point[0]] > 9:
-                    flash_point(point, grid)
     flash_count = 0
     grid = [[int(char.rstrip()) for char in line.strip()] for line in input]
     for _ in range(STEPS_TO_TAKE):
@@ -43,28 +43,6 @@ def part_one(input):
     return flash_count
 
 def part_two(input):
-    def find_neighbor_points(point, grid):
-        directions = [
-            (point[0], point[1]-1) if ((point[1]-1 >= 0)) else None, # up
-            (point[0], point[1]+1) if ((point[1]+1 < len(grid))) else None, # down
-            (point[0]-1, point[1]) if ((point[0]-1 >= 0)) else None, # left
-            (point[0]+1, point[1]) if (point[0]+1 < len(grid[point[1]])) else None, # right
-            (point[0]-1, point[1]-1) if ((point[0]-1 >= 0) and (point[1]-1 >= 0)) else None, # up-left
-            (point[0]-1, point[1]+1) if ((point[0]-1 >= 0) and (point[1]+1 < len(grid))) else None, # down-left
-            (point[0]+1, point[1]-1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]-1 >= 0)) else None, # up-right
-            (point[0]+1, point[1]+1) if ((point[0]+1 < len(grid[point[1]])) and (point[1]+1 < len(grid))) else None, # up-right
-        ]
-        return directions
-
-    # Flashes point, and cascades flashes caused by flashes
-    def flash_point(point, grid):
-        grid[point[1]][point[0]] = MINSIZE # 
-        for point in find_neighbor_points(point, grid):
-            if point:
-                grid[point[1]][point[0]] += 1
-                if grid[point[1]][point[0]] > 9:
-                    flash_point(point, grid)
-
     grid = [[int(char.rstrip()) for char in line.strip()] for line in input]
     flash_count = 0
     iteration_number = 0
