@@ -16,8 +16,6 @@ def plot(grid):
 def part_one(input):
     dots = [] # [(3, 4), (5, 2)] where tuples are (x, y)
     folds = [] # [(5, Y), (3, X)...]
-    paper_x_length = 0
-    paper_y_length = 0
     for line in input:
         if 'fold along y=' in line: 
             folds.append((int(line.replace('fold along y=', '').rstrip()), Y))
@@ -28,8 +26,6 @@ def part_one(input):
         elif not line.rstrip(): continue
         else: 
             dot = tuple([int(l.rstrip()) for l in line.split(',')])
-            if dot[0] > paper_x_length: paper_x_length = dot[0] 
-            if dot[1] > paper_y_length: paper_y_length = dot[1]
             dots.append(dot)
     # This doesn't really have to be a loop because part one only cares about the first fold
     # Whatever though.
@@ -50,8 +46,6 @@ def part_one(input):
 def part_two(input):
     dots = [] # [(3, 4), (5, 2)] where tuples are (x, y)
     folds = [] # [(5, Y), (3, X)...]
-    paper_x_length = 0
-    paper_y_length = 0
     for line in input:
         if 'fold along y=' in line: 
             folds.append((int(line.replace('fold along y=', '').rstrip()), Y))
@@ -62,8 +56,6 @@ def part_two(input):
         elif not line.rstrip(): continue
         else: 
             dot = tuple([int(l.rstrip()) for l in line.split(',')])
-            if dot[0] > paper_x_length: paper_x_length = dot[0] 
-            if dot[1] > paper_y_length: paper_y_length = dot[1]
             dots.append(dot)
     
     for fold in folds:
