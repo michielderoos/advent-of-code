@@ -6,7 +6,7 @@ def plot(grid):
     s.append('\n')
     # I could calculate the grid size, but can't be bothered
     for x in range(10):
-        for y in range(20):
+        for y in range(40):
             if (y, x) in grid: s.append('#')
             else: s.append('.')
         s.append('\n')
