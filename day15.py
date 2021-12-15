@@ -108,12 +108,12 @@ def part_two(input):
     # Stretch X axis
     for idx, row in enumerate(grid):
         new_row = row
-        for n in range(STRETCH_X - 1):
+        for _ in range(STRETCH_X - 1):
             new_row = [x+1 if x+1 != 10 else 1 for x in new_row]
             grid[idx] = grid[idx] + new_row
     # Stretch Y axis
     last_row = grid.copy()
-    for n in range(STRETCH_Y -  1):
+    for _ in range(STRETCH_Y -  1):
         for idx, row in enumerate(last_row):
             last_row[idx] = [x+1 if x+1 != 10 else 1 for x in row]
         for row in last_row:
