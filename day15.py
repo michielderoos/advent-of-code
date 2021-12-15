@@ -1,4 +1,4 @@
-import time
+# This is one of my ugliest solutions so far!
 
 START_POINT = (0, 0)
 END_POINT = (9, 9)
